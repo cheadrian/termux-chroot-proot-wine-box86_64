@@ -191,7 +191,7 @@ Here's how you can run Portal game for Windows using Wine32 and Box86. Without h
 	
 It should run and working, but there's a bug with the light exposure, and everything slowly transform to white.
 
-To solve the exposure bug, check [Install DXVK](/blob/main/Hardware_Acceleration_Resources.md#Install%20DXVK). It will not run accelerated inside proot, as the proot doesn't have access to Vulkan driver: 
+To solve the exposure bug, check [Install DXVK](Hardware_Acceleration_Resources.md#Install%20DXVK). It will not run accelerated inside proot, as the proot doesn't have access to Vulkan driver: 
 
     MESA_GL_VERSION_OVERRIDE=4.3COMPAT MESA_GLES_VERSION_OVERRIDE=3.2 BOX86_NOBANNER=1 WINEDEBUG=-all wine hl2.exe -steam -game portal -silent -window -novid -applaunch 400 -dxlevel 80 -width 800 -height 600
 	
