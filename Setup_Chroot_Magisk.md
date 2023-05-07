@@ -189,4 +189,4 @@ Add the Termux widget on your screen, from launcher widgets, so you can start ev
 
 ### Explore alternative hardware acceleration methods:
 
-Check the [Hardware Acceleration Resources](/blob/main/Hardware_Acceleration_Resources.md).
+Check the [Hardware Acceleration Resources](Hardware_Acceleration_Resources.md).
