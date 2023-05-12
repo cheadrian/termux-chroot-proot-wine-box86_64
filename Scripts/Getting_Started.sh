@@ -5,6 +5,7 @@ export UYELLOW='\033[4;33m'
 export WHITE='\033[0;37m' 
 
 echo -e "${GREEN}Clone the repo.${WHITE}"
+pkg update -y
 pkg install -y git
 cd ~
 git clone https://github.com/cheadrian/termux-chroot-proot-wine-box86_64
