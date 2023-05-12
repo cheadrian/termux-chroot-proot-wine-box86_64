@@ -57,7 +57,8 @@ wget https://github.com/termux/termux-widget/releases/download/v0.13.0/termux-wi
 termux-open termux-widget_v0.13.0+github-debug.apk
 
 echo -e "${GREEN}Add shortcuts to launch Termux:X11 app, pulseaudio, virgl server, and XFCE in proot.${WHITE}"
-mkdir .shortcuts
+
+mkdir ~/.shortcuts
 echo '#!/bin/sh
 killall -9 termux-x11 Xwayland pulseaudio virgl_test_server_android virgl_test_server
 termux-wake-lock; termux-toast "Starting X11"
