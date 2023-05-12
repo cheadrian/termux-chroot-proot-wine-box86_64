@@ -1,5 +1,9 @@
 # Termux chroot / proot with Wine, Box86, and GPU
 
+You can set up eveything using this command in Termux:
+
+    wget -O - https://raw.githubusercontent.com/cheadrian/termux-chroot-proot-wine-box86_64/main/Scripts/Getting_Started.sh | bash
+
 ![Collage with Call of Duty 2, Euro Truck Simulator, Portal](https://raw.githubusercontent.com/cheadrian/termux-chroot-proot-wine-box86_64/main/Games_Collage.png)
 
 This git repository contains several markdown files that provide information and instructions for setting up and using various hardware acceleration and software tools on Android devices. The files are as follows:
