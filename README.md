@@ -3,6 +3,16 @@
 You can set up eveything using this command in Termux:
 
     wget https://raw.githubusercontent.com/cheadrian/termux-chroot-proot-wine-box86_64/main/Scripts/Getting_Started.sh && chmod +x Getting_Started.sh && ./Getting_Started.sh && rm Getting_Started.sh
+	
+This script will:
+- Clone this git and scripts;
+- Create an Ubuntu proot with alias ubuntu_box86;
+- Install Termux:X11 app and package, Termux:Widget app;
+- Add packages as pulseaudio, virglrenderer, xwayland, etc.;
+- Create shortcuts to launch XFCE in proot using the Termux:Widget;
+- Set up the proot with Box86, Box64, Wine32 and Wine64;
+
+[Addons_Menu.sh](Scripts/Addons_Menu.sh): Let you to install mesa with zink and virgl zink,Steam (not working fully yet), add bash I386 and bash AMD64 for Box86_64, add an user to proot, compile GL4ES, etc. .
 
 ![Collage with Call of Duty 2, Euro Truck Simulator, Portal](https://raw.githubusercontent.com/cheadrian/termux-chroot-proot-wine-box86_64/main/Games_Collage.png)
 
