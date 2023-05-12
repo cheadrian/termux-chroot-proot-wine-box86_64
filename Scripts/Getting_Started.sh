@@ -4,8 +4,15 @@ export GREEN='\033[0;32m'
 export UYELLOW='\033[4;33m'
 export WHITE='\033[0;37m' 
 
-echo -e "${GREEN}Clone the repo.${WHITE}"
 pkg update -y
+read -p "Do you want to change the Termux repo to a faster one? (y/n) " yn
+
+case $yn in 
+	y ) termux-change-repo;;
+	* ) echo -e "${GREEN}Continue with the current repo.${WHITE}";;
+esac
+
+echo -e "${GREEN}Clone the repo.${WHITE}"
 pkg install -y git
 cd ~
 git clone https://github.com/cheadrian/termux-chroot-proot-wine-box86_64
