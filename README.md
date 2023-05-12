@@ -2,7 +2,7 @@
 
 You can set up eveything using this command in Termux:
 
-    wget -O - https://raw.githubusercontent.com/cheadrian/termux-chroot-proot-wine-box86_64/main/Scripts/Getting_Started.sh | bash
+    wget https://raw.githubusercontent.com/cheadrian/termux-chroot-proot-wine-box86_64/main/Scripts/Getting_Started.sh && chmod +x Getting_Started.sh && ./Getting_Started.sh && rm Getting_Started.sh
 
 ![Collage with Call of Duty 2, Euro Truck Simulator, Portal](https://raw.githubusercontent.com/cheadrian/termux-chroot-proot-wine-box86_64/main/Games_Collage.png)
 
