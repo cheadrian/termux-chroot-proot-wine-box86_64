@@ -71,7 +71,6 @@ virgl_test_server_android &
 proot-distro login ubuntu_box86 --user root --shared-tmp --no-sysvipc -- bash -c "export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713; dbus-launch --exit-with-session startxfce4"' > ~/.shortcuts/LaunchXFCE_proot
 chmod +x ~/.shortcuts/LaunchXFCE_proot
 
-Create a kill script compatible with Termux:Widget app:
 echo -e "${GREEN}Create a kill all shortcut.${WHITE}"
 
 echo '#!/bin/sh
