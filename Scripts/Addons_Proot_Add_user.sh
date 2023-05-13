@@ -8,6 +8,7 @@ if id -u box >/dev/null 2>&1; then
     echo -e "${GREEN}Looks like the user 'box' exists."
     echo -e "${UYELLOW}Proot\nusername: box\npassword: box${WHITE}"
 	read -n 1 -s -r -p "Press any key to continue."
+	echo -e "${WHITE}"
 	exit
 fi
 

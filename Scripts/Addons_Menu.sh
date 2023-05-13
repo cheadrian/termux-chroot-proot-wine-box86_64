@@ -4,7 +4,7 @@ export GREEN='\033[0;32m'
 export TURQ='\033[0;36m'
 export UYELLOW='\033[4;33m'
 export WHITE='\033[0;37m'
-export PROOT_ROOT = $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu_box86/root/
+export PROOT_ROOT=$PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu_box86/root
 
 echo -e "${GREEN}Run these actions only if you already have the proot with Box86_64 and Wine86_64 configured.";
 echo -e "${GREEN}You can run this menu anytime using './Addons_Menu.sh' inside Termux.";
