@@ -15,6 +15,7 @@ echo -e "${WHITE}"
 echo -e "${GREEN}Run the scripts that add 'box' user and configure Box Bash.${WHITE}"
 ./Addons_Proot_Add_user.sh
 ./Addons_Proot_Box86_64_Bash.sh
+source ~/.bashrc
 
 echo -e "${GREEN}Add some necesary Steam packages.${WHITE}"
 apt install -y binutils xterm file zenity libc6 pciutils
