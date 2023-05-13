@@ -44,7 +44,7 @@ case $opt in
 		chmod +x $PROOT_ROOT/Addons_Proot_Add_user.sh
 		chmod +x $PROOT_ROOT/Addons_Proot_Box86_64_Bash.sh
 		chmod +x $PROOT_ROOT/Addons_Proot_Steam.sh
-		proot-distro login ubuntu_box86 --user root --shared-tmp -- bash -c "./Addons_Proot_Steam.sh"
+		proot-distro login ubuntu_box86 --user root --shared-tmp -- bash -i -c "./Addons_Proot_Steam.sh"
 		rm $PROOT_ROOT/Addons_Proot_Steam.sh
 		rm $PROOT_ROOT/Addons_Proot_Add_user.sh
 		rm $PROOT_ROOT/Addons_Proot_Box86_64_Bash.sh
