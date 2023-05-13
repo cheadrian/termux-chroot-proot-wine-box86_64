@@ -4,10 +4,17 @@ export GREEN='\033[0;32m'
 export UYELLOW='\033[4;33m'
 export WHITE='\033[0;37m' 
 
+if [ "$BOX86_BASH" ] && [ "$BOX64_BASH" ]; then
+    echo -e "${GREEN}Looks like the bash86_64 is already insalled."
+	read -n 1 -s -r -p "Press any key to continue."
+	echo -e "${WHITE}"
+	exit
+fi
+
 echo -e "${GREEN}Due to lack of binfmt on some devices, the Box86 and Box64 can't run binaries as it is designed."
 echo -e "${GREEN}This will setup bash Box environment according to:"
 echo -e "${GREEN}https://box86.org/2022/09/running-bash-with-box86-box64/${WHITE}"
-echo -e "${GREEN}It is necessary, e.g., to run Steam inside Termux Proot."
+echo -e "${GREEN}It is necessary, e.g., to run Steam inside Termux Proot.${WHITE}"
 read -n 1 -s -r -p "Press any key to continue."
 echo -e "${WHITE}"
 
