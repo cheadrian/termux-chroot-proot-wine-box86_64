@@ -4,6 +4,7 @@ export GREEN='\033[0;32m'
 export UYELLOW='\033[4;33m'
 export WHITE='\033[0;37m' 
 
+source ~/.bashrc
 if [ "$BOX86_BASH" ] && [ "$BOX64_BASH" ]; then
     echo -e "${GREEN}Looks like the bash86_64 is already insalled."
 	read -n 1 -s -r -p "Press any key to continue."
