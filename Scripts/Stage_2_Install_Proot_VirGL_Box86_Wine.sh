@@ -125,7 +125,7 @@ echo -e "${UYELLOW}You need zenity to run winetricks --gui desktop shortcuts, wh
 read -p "Do you want to install zenity? (y/n) " yn
 
 case $yn in 
-	y ) echo -e "${GREEN}Install zenity...";
+	y ) echo -e "${GREEN}Install zenity...${WHITE}";
 		apt install -y zenity;;
 	* ) echo -e "${GREEN}You can install zenity with apt anytime.${WHITE}";;
 esac
