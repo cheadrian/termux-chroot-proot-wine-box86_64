@@ -19,9 +19,10 @@ echo -e "${UYELLOW}Run these actions only if you already have the proot with Box
 echo -e "${TURQ}1. Proot: Add new user named 'box'."
 echo -e "${TURQ}2. Proot: Set up Bash x86 and x64 with Box86 and Box64."
 echo -e "${TURQ}3. Proot: Install Steam. ${UYELLOW}NOTE: Doesn't start completely now."
-echo -e "${TURQ}4. Termux: Set-up mesa-zink and compatible virgl server.${WHITE}"
-echo -e "${TURQ}5. Proot: Set-up GL4ES.${WHITE}"
-echo -e "Anything else: exit."
+echo -e "${TURQ}4. Termux: Set-up mesa-zink and compatible virgl server."
+echo -e "${TURQ}5. Proot: Set-up GL4ES."
+echo -e "${TURQ}6. Termux: Create alias shortcuts to enter in the Ubuntu proot."
+echo -e "Anything else: exit.${WHITE}"
 
 read -p "Please select an option:" opt
 case $opt in 
@@ -61,6 +62,10 @@ case $opt in
 		chmod +x $PROOT_ROOT/Addons_Proot_GL4ES.sh
 		proot-distro login ubuntu_box86 --user root --shared-tmp --no-sysvipc -- bash -c "./Addons_Proot_GL4ES.sh"
 		rm $PROOT_ROOT/Addons_Proot_GL4ES.sh
+		exit;;
+	6 ) echo -e "${GREEN}Adding a shortcut to enter in the proot...${WHITE}"
+	    chmod +x $SCRIPT_DIR/Addons_Termux_Ubuntu_Box.sh
+		$SCRIPT_DIR/Addons_Termux_Ubuntu_Box.sh
 		exit;;
 	* ) echo -e "${GREEN}Goodbye :)!.${WHITE}"
 		exit;;
