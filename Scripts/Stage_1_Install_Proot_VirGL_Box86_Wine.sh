@@ -18,11 +18,17 @@ pkg install -y x11-repo
 pkg update -y
 
 echo -e "${GREEN}Install sshd, virgl, pulseaudio, xwayland, proot, wget.${WHITE}"
-pkg install -y pulseaudio virglrenderer-android xwayland proot-distro wget unzip openssh 
+pkg install -y pulseaudio virglrenderer-android xwayland proot-distro wget unzip 
 
-echo -e "${GREEN}Set a password for the Termux, used by ssh server.${WHITE}"
-echo -e "${UYELLOW}Note: don't forget that default Termux ssh port is 8022.${WHITE}"
-passwd
+read -p "Optional: Do you want to setup a ssh server (openssh)? (y/n) " yn
+
+case $yn in 
+	y ) echo -e "${GREEN}Install openssh...${WHITE}"
+	    apt install -y openssh
+	    echo -e "${UYELLOW}To connect through ssh, use password you set next and port 8022.${WHITE}"
+	    passwd;;
+	* ) echo -e "${GREEN}Continue without installing ssh.${WHITE}";;
+esac
 
 echo -e "${GREEN}Download and install Termux:X11 deb."
 echo -e "${UYELLOW}Note: you can get the latest version from termux/termux-x11 Github.${WHITE}"
