@@ -35,7 +35,7 @@ chmod +x install_steam.sh
 ./install_steam.sh
 EOF
 
-echo -e "${GREEN}Run Steam through bash86, using 'box' user."
+echo -e "${GREEN}Run Steam through bash86, using 'box' user.${WHITE}"
 sudo -E -H -u box box86 steam
 
 echo -e "${UYELLOW}Next time you can run Steam, from 'root' user, using: 'sudo -E -H -u box box86 steam' or copy the relevant env variables (.bashrc) to the 'box' user.${WHITE}"
