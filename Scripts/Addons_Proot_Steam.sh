@@ -7,7 +7,8 @@ export WHITE='\033[0;37m'
 
 echo -e "${GREEN}This script will help you install Steam using Box86 'install_steam.sh' and Box86 bash, inside 'box' user."
 echo -e "${UYELLOW}Run this in a proot without '--no-sysvipc' otherwise Steam will throw 'semaphore' errors.\nSadly, some devices can't run all proot functions without '--no-sysvipc'.\nCheck: https://github.com/ptitSeb/box86/issues/699 and https://box86.org/2022/09/running-bash-with-box86-box64/"
-echo -e "${URED}W.I.P.: For now (12 May 2023) it throws 'Fatal error: futex robust_list not initialized by pthreads' error.\nCheck: https://github.com/ptitSeb/box86/issues/770${WHITE}"
+echo -e "${URED}W.I.P.: For now (12 May 2023) it throws 'Fatal error: futex robust_list not initialized by pthreads' error.\nCheck: https://github.com/ptitSeb/box86/issues/770 ${WHITE}"
+echo -e "${UYELLOW}Make sure you have the XFCE and Termux:X11 already running.${WHITE}"
 read -n 1 -s -r -p "Press any key to continue."
 echo -e "${WHITE}"
 
