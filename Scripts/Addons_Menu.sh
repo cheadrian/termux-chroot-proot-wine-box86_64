@@ -57,7 +57,7 @@ case $opt in
 		exit;;
 	4 ) echo -e "${GREEN}Adding tur-repo and install mesa-zink...${WHITE}"
 	    chmod +x $SCRIPT_DIR/Addons_Termux_Mesa_Zink_VirGL.sh
-		./$SCRIPT_DIR/Addons_Termux_Mesa_Zink_VirGL.sh
+		$SCRIPT_DIR/Addons_Termux_Mesa_Zink_VirGL.sh
 		exit;;
 	5 ) echo -e "${GREEN}Set up Bash x86 and x64.${WHITE}"
 		cp $SCRIPT_DIR/Addons_Proot_GL4ES.sh $PROOT_ROOT/Addons_Proot_GL4ES.sh
