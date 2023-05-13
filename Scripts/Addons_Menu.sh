@@ -49,10 +49,7 @@ case $opt in
 		rm $PROOT_ROOT/Addons_Proot_Add_user.sh
 		rm $PROOT_ROOT/Addons_Proot_Box86_64_Bash.sh
 		echo -e "${GREEN}Add shortcut to Termux:Widget for Steam${WHITE}"
-		echo '#!/bin/sh
-		echo "Please make sure you already running the XFCE and Termux:X11!"
-		sleep 1
-		proot-distro login ubuntu_box86 --user root --shared-tmp -- bash -i -c "sudo -E -H -u box box86 steam"' > ~/.shortcuts/LaunchSteam_proot
+		echo -e '#!/bin/sh\necho "Please make sure you already running the XFCE and Termux:X11!"\nsleep 1\nproot-distro login ubuntu_box86 --user root --shared-tmp -- bash -i -c "sudo -E -H -u box box86 steam"' > ~/.shortcuts/LaunchSteam_proot
 		chmod +x ~/.shortcuts/LaunchSteam_proot
 		exit;;
 	4 ) echo -e "${GREEN}Adding tur-repo and install mesa-zink...${WHITE}"
