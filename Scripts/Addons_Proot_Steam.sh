@@ -17,7 +17,7 @@ echo -e "${GREEN}Run the scripts that add 'box' user and configure Box Bash.${WH
 ./Addons_Proot_Box86_64_Bash.sh
 
 echo -e "${GREEN}Add some necesary Steam packages.${WHITE}"
-apt install -y binutils xterm file zenity libc6 pciutils
+apt install -y binutils xterm file zenity libc6 pciutils libcairo2 libcairo2:armhf libxdamage1 libxdamage1:armhf libjpeg-dev libjpeg-dev:armhf libselinux1 libselinux1:armhf libgl1-mesa-glx libgl1-mesa-glx:armhf libogg-dev libogg-dev:armhf libvorbis-dev libvorbis-dev:armhf libpulse0 libpulse0:armhf libopenal1 libopenal1:armhf libice6 libice6:armhf libxss1 libxss1:armhf libxtst6 libxtst6:armhf libbz2-dev libbz2-dev:armhf libsm6 libsm6:armhf
 
 echo -e "${GREEN}Install libpng12.${WHITE}"
 mkdir ~/Downloads/libpng
