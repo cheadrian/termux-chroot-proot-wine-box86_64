@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -i
 
 export GREEN='\033[0;32m'
 export URED='\033[4;31m'
@@ -36,6 +36,7 @@ chmod +x install_steam.sh
 ./install_steam.sh
 EOF
 
+source ~/.bashrc
 echo -e "${GREEN}Run Steam through bash86, using 'box' user.${WHITE}"
 sudo -E -H -u box box86 steam
 
