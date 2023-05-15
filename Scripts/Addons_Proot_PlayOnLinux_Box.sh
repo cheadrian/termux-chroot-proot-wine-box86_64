@@ -17,7 +17,7 @@ echo -e "${GREEN}Run the scripts that add 'box' user and configure Box Bash.${WH
 echo -e "${GREEN}Install playonlinux.${WHITE}"
 apt install -y playonlinux
 
-echo -e "${GREEN}Add desktop shortcuts for PoL run as 'box'.${WHITE}":
+echo -e "${GREEN}Add desktop shortcuts for PoL run as 'box'.${WHITE}"
 echo '[Desktop Entry]
 Version=1.0
 Name=PlayOnLinux Box
@@ -29,7 +29,6 @@ Categories=Utility;Emulator;' > ~/Desktop/PlayOnLinux_box.desktop
 chmod +x ~/Desktop/PlayOnLinux_box.desktop
 cp ~/Desktop/PlayOnLinux_box.desktop /usr/share/applications/
 
-echo -e "${GREEN}Add desktop shortcuts for PoL run as 'box'.${WHITE}":
 echo '[Desktop Entry]
 Version=1.0
 Name=PlayOnLinux Box64
