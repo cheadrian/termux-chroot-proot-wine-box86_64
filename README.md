@@ -34,4 +34,6 @@ This git repository contains several markdown files that provide information and
 
 - [Setup_Steam.md](Setup_Steam.md): Provides detail and hints about how you can run Steam using the environment set up as above.
 
+- [Setup_PlayOnLinux.md](Setup_PlayOnLinux.md): You can check how you can get, with ease, get the PlayOnLinux to use Box86_64 inside the proot.
+
 Each markdown file includes detailed instructions and resources for setting up and using the respective tool or technology. Feel free to explore and use these files as a guide for enhancing your Android device with new capabilities.
