@@ -14,7 +14,14 @@ This script will:
 - Create shortcuts to launch XFCE in proot using the Termux:Widget;
 - Set up the proot with Box86, Box64, Wine32 and Wine64;
 
-[Addons_Menu.sh](Scripts/Addons_Menu.sh): Let you to install mesa with zink and virgl zink, Steam (not working fully yet), add bash I386 and bash AMD64 for Box86_64, add an user to proot, compile GL4ES, etc. .
+[Addons_Menu.sh](Scripts/Addons_Menu.sh): Let you to install in:
+- Termux: Set-up mesa-zink and compatible virgl server.
+- Termux: Create alias shortcuts to enter in the Ubuntu proot.
+- Proot: Add new user named 'box'.
+- Proot: Set up Bash x86 and x64 with Box86 and Box64.
+- Proot: Install Steam. NOTE: Doesn't start completely now.
+- Proot: Compile and install GL4ES.
+- Proot: Install native PlayOnLinux with Box86_64 support.
 
 Current versions: Wine 8.7 from [Wine-Builds](https://github.com/Kron4ek/Wine-Builds), latest Box86_64 from [ryanfortner](https://github.com/ryanfortner), [Termux:Widget v0.13](https://github.com/termux/termux-widget/releases/tag/v0.13.0) (Github), [Termux:X11 v1.02.07](https://github.com/termux/termux-x11/actions/runs/4524914392) (Github).
 
