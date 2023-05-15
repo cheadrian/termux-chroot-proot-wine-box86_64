@@ -22,6 +22,7 @@ echo -e "${TURQ}3. Proot: Install Steam. ${UYELLOW}NOTE: Doesn't start completel
 echo -e "${TURQ}4. Termux: Set-up mesa-zink and compatible virgl server."
 echo -e "${TURQ}5. Proot: Set-up GL4ES."
 echo -e "${TURQ}6. Termux: Create alias shortcuts to enter in the Ubuntu proot."
+echo -e "${TURQ}7. Proot: Install native PlayOnLinux with Box86_64 support."
 echo -e "Anything else: exit.${WHITE}"
 
 read -p "Please select an option:" opt
@@ -38,7 +39,7 @@ case $opt in
 		proot-distro login ubuntu_box86 --user root --shared-tmp --no-sysvipc -- bash -c "./Addons_Proot_Box86_64_Bash.sh"
 		rm $PROOT_ROOT/Addons_Proot_Box86_64_Bash.sh
 		exit;;
-	3 ) echo -e "${GREEN}Install Steam...${WHITE}"
+	3 ) echo -e "${GREEN}Install Steam.${WHITE}"
 		cp $SCRIPT_DIR/Addons_Proot_Add_user.sh $PROOT_ROOT/Addons_Proot_Add_user.sh
 		cp $SCRIPT_DIR/Addons_Proot_Box86_64_Bash.sh $PROOT_ROOT/Addons_Proot_Box86_64_Bash.sh
 		cp $SCRIPT_DIR/Addons_Proot_Steam.sh $PROOT_ROOT/Addons_Proot_Steam.sh
@@ -49,11 +50,11 @@ case $opt in
 		rm $PROOT_ROOT/Addons_Proot_Steam.sh
 		rm $PROOT_ROOT/Addons_Proot_Add_user.sh
 		rm $PROOT_ROOT/Addons_Proot_Box86_64_Bash.sh
-		echo -e "${GREEN}Add shortcut to Termux:Widget for Steam${WHITE}"
+		echo -e "${GREEN}Add shortcut to Termux:Widget for Steam.${WHITE}"
 		echo -e '#!/bin/sh\necho "Please make sure you already running the XFCE and Termux:X11!"\nsleep 1\nproot-distro login ubuntu_box86 --user root --shared-tmp -- bash -i -c "sudo -E -H -u box box86 steam"' > ~/.shortcuts/LaunchSteam_proot
 		chmod +x ~/.shortcuts/LaunchSteam_proot
 		exit;;
-	4 ) echo -e "${GREEN}Adding tur-repo and install mesa-zink...${WHITE}"
+	4 ) echo -e "${GREEN}Adding tur-repo and install mesa-zink.${WHITE}"
 	    chmod +x $SCRIPT_DIR/Addons_Termux_Mesa_Zink_VirGL.sh
 		$SCRIPT_DIR/Addons_Termux_Mesa_Zink_VirGL.sh
 		exit;;
@@ -63,9 +64,15 @@ case $opt in
 		proot-distro login ubuntu_box86 --user root --shared-tmp --no-sysvipc -- bash -c "./Addons_Proot_GL4ES.sh"
 		rm $PROOT_ROOT/Addons_Proot_GL4ES.sh
 		exit;;
-	6 ) echo -e "${GREEN}Adding a shortcut to enter in the proot...${WHITE}"
+	6 ) echo -e "${GREEN}Adding a shortcut to enter in the proot.${WHITE}"
 	    chmod +x $SCRIPT_DIR/Addons_Termux_Ubuntu_Box.sh
 		$SCRIPT_DIR/Addons_Termux_Ubuntu_Box.sh
+		exit;;
+	7 ) echo -e "${GREEN}Install the PlayOnLinux.${WHITE}"
+		cp $SCRIPT_DIR/Addons_Proot_PlayOnLinux_Box.sh $PROOT_ROOT/Addons_Proot_PlayOnLinux_Box.sh
+		chmod +x $PROOT_ROOT/Addons_Proot_PlayOnLinux_Box.sh
+		proot-distro login ubuntu_box86 --user root --shared-tmp --no-sysvipc -- bash -c "./Addons_Proot_PlayOnLinux_Box.sh"
+		rm $PROOT_ROOT/Addons_Proot_PlayOnLinux_Box.sh
 		exit;;
 	* ) echo -e "${GREEN}Goodbye :)!.${WHITE}"
 		exit;;
