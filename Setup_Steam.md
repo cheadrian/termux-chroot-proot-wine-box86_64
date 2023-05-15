@@ -4,7 +4,7 @@ Run everything inside your Ubuntu 22.04 proot. I didn't test this yet using chro
 
 [Addons_Proot_Steam.sh](Scripts/Addons_Proot_Steam.sh) will do this for you. Make sure you run it through [Addons_Menu.sh](Scripts/Addons_Menu.sh).
 
-Steam on your device using Box86. It requires the use of 'proot' without **'--no-sysvipc'**.
+Steam Linux on your device using Box86. It requires the use of 'proot' without **'--no-sysvipc'**.
 
 ## Problems
 
@@ -23,3 +23,7 @@ https://github.com/ptitSeb/box86/issues/770
 ## Installation
 
 For now, I don't write a direct guide. Please follow [the script](Scripts/Addons_Proot_Steam.sh) mentioned above.
+
+## Alternative
+
+You can install and run the Windows version of Steam through the [PlayOnLinux](Setup_PlayOnLinux.md) or set it up with already installed Wine.
