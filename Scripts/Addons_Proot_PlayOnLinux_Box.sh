@@ -6,7 +6,7 @@ export UYELLOW='\033[4;33m'
 export WHITE='\033[0;37m' 
 
 echo -e "${GREEN}PlayOnLinux works fine within the 'box' user with the script '/usr/local/bin/wine' created at set up."
-echo -e "${UYELLOW}Due to lack of binfmt, you need to set BEFORE_WINE=box86 or box64 to force PoL use different version of wine, other than system like above, through Box86_64.${WHITE}"
+echo -e "${UYELLOW}Due to lack of binfmt, you need to set BEFORE_WINE=box86 or box64 to use different version of wine, other than system, through Box86_64.${WHITE}"
 read -n 1 -s -r -p "Press any key to continue."
 echo -e "${WHITE}"
 
