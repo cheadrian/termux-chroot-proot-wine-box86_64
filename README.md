@@ -14,9 +14,9 @@ This script will:
 - Create shortcuts to launch XFCE in proot using the Termux:Widget;
 - Set up the proot with Box86, Box64, Wine32 and Wine64;
 
-[Addons_Menu.sh](Scripts/Addons_Menu.sh): Let you to install in:
+[Addons_Menu.sh](Scripts/Addons_Menu.sh): Let you, in:
 - Termux: Set-up mesa-zink and compatible virgl server.
-- Termux: Create alias shortcuts to enter in the Ubuntu proot.
+- Termux: Create an alias to enter in Ubuntu proot.
 - Proot: Add new user named 'box'.
 - Proot: Set up Bash x86 and x64 with Box86 and Box64.
 - Proot: Install Steam. NOTE: Doesn't start completely now.

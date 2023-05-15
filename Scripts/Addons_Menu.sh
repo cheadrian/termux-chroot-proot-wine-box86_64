@@ -21,7 +21,7 @@ echo -e "${TURQ}2. Proot: Set up Bash x86 and x64 with Box86 and Box64."
 echo -e "${TURQ}3. Proot: Install Steam. ${UYELLOW}NOTE: Doesn't start completely now."
 echo -e "${TURQ}4. Termux: Set-up mesa-zink and compatible virgl server."
 echo -e "${TURQ}5. Proot: Compile and install GL4ES."
-echo -e "${TURQ}6. Termux: Create alias shortcuts to enter in the Ubuntu proot."
+echo -e "${TURQ}6. Termux: Create an alias to enter in Ubuntu proot."
 echo -e "${TURQ}7. Proot: Install native PlayOnLinux with Box86_64 support."
 echo -e "Anything else: exit.${WHITE}"
 
