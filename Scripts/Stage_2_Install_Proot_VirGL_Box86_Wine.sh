@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 export GREEN='\033[0;32m'
 export UYELLOW='\033[4;33m'
 export WHITE='\033[0;37m' 
