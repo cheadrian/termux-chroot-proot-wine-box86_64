@@ -84,7 +84,7 @@ wine64 '"/usr/local/bin/winetricks "'"$@"' > /usr/local/bin/winetricks64
 chmod +x /usr/local/bin/winetricks64
 
 
-echo -e "${GREEN}Add desktop shortcuts for wine.{WHITE}"
+echo -e "${GREEN}Add desktop shortcuts for wine.${WHITE}"
 mkdir ~/Desktop
 cd ~/Desktop
 echo '[Desktop Entry]
