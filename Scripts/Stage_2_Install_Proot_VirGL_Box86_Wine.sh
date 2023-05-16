@@ -6,7 +6,7 @@ export WHITE='\033[0;37m'
 
 echo -e "${GREEN}The second stage of the setup that runs inside the Ubuntu proot."
 echo -e "${GREEN}This will install XFCE4, Box86, Box64, Wine x86 and x64 and winetricks."
-echo -e "${GREEN}It will take a few minutes and about 1GB of space."
+echo -e "${GREEN}It will take a few minutes and about 1GB of space.${WHITE}"
 read -n 1 -s -r -p "Press any key to continue."
 echo -e "${WHITE}"
 echo -e "${GREEN}Install base packages and XFCE4.${WHITE}"
