@@ -17,13 +17,24 @@ echo -e "${GREEN}Run the scripts that add 'box' user and configure Box Bash.${WH
 echo -e "${GREEN}Install playonlinux.${WHITE}"
 apt install -y playonlinux
 
+echo -e "${GREEN}Create shortcuts for the PlayOnLinux.${WHITE}"
+echo -e "${UYELLOW}You can start PoL with Box86 using the 'playonlinux32', and Box64 with 'playonlinux64'.${WHITE}"
+echo '#!/bin/bash -i
+export BOX86_NOBANNER=1 BEFORE_WINE=box86
+sudo -E -H -u box playonlinux' > /usr/local/bin/playonlinux32
+chmod +x /usr/local/bin/playonlinux32
+echo '#!/bin/bash -i
+export BOX64_NOBANNER=1 BEFORE_WINE=box64
+sudo -E -H -u box box64 playonlinux' > /usr/local/bin/playonlinux64
+chmod +x /usr/local/bin/playonlinux64
+
 echo -e "${GREEN}Add desktop shortcuts for PoL run as 'box'.${WHITE}"
 echo '[Desktop Entry]
 Version=1.0
 Name=PlayOnLinux Box
 Comment=Front-end application for the wine
 Type=Application
-Exec=sudo -E -H -u box BEFORE_WINE=box86 playonlinux %F
+Exec=bash -i -c "source ~/.bashrc && sudo -E -H -u box BEFORE_WINE=box86 playonlinux %F"
 Icon=playonlinux
 Categories=Utility;Emulator;' > ~/Desktop/PlayOnLinux_box.desktop
 chmod +x ~/Desktop/PlayOnLinux_box.desktop
@@ -34,7 +45,7 @@ Version=1.0
 Name=PlayOnLinux Box64
 Comment=Front-end application for the wine
 Type=Application
-Exec=sudo -E -H -u box BEFORE_WINE=box64 box64 playonlinux %F
+Exec=bash -i -c "source ~/.bashrc && sudo -E -H -u box BEFORE_WINE=box64 box64 playonlinux %F"
 Icon=playonlinux
 Categories=Utility;Emulator;' > ~/Desktop/PlayOnLinux_box64.desktop
 chmod +x ~/Desktop/PlayOnLinux_box64.desktop
