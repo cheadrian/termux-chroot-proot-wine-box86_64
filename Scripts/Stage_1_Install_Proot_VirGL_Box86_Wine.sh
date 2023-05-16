@@ -5,7 +5,7 @@ export UYELLOW='\033[4;33m'
 export WHITE='\033[0;37m' 
 
 echo -e "${UYELLOW}If you are on Android 12+, make sure to fix Phantom Processes Kill. Check Setup_Proot.md for more details."
-echo -e "${GREEN}This script will install Termux:X11, virgl server for GPU acceleration, and inside an Ubuntu proot, Box86, Wine."
+echo -e "${GREEN}This script will install Termux:X11, virgl server for GPU acceleration, and inside an Ubuntu proot, Box86, Wine.${WHITE}"
 read -n 1 -s -r -p "Press any key to continue."
 echo -e "${WHITE}"
 
@@ -17,7 +17,7 @@ echo -e "${GREEN}Add x11-repo.${WHITE}"
 pkg install -y x11-repo 
 pkg update -y
 
-echo -e "${GREEN}Install sshd, virgl, pulseaudio, xwayland, proot, wget.${WHITE}"
+echo -e "${GREEN}Install virgl, pulseaudio, xwayland, proot, wget.${WHITE}"
 pkg install -y pulseaudio virglrenderer-android xwayland proot-distro wget unzip 
 
 read -p "Optional: Do you want to setup a ssh server (openssh)? (y/n) " yn
@@ -38,7 +38,7 @@ rm Termux_X11.zip
 dpkg -i Termux_X11/termux-x11-*.deb
 sed '/allow-external-apps/s/^# //' -i ~/.termux/termux.properties
 termux-reload-settings
-echo -e "${GREEN}Install Termux:X11 APK. Open APP installer."
+echo -e "${GREEN}Install Termux:X11 APK. Open APP installer.${WHITE}"
 read -n 1 -s -r -p "Press any key to continue."
 echo -e "${WHITE}"
 termux-open Termux_X11/app-debug.apk
