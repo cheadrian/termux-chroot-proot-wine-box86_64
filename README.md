@@ -44,3 +44,17 @@ This git repository contains several markdown files that provide information and
 - [Setup_PlayOnLinux.md](Setup_PlayOnLinux.md): You can check how you can get, with ease, get the PlayOnLinux to use Box86_64 inside the proot.
 
 Each markdown file includes detailed instructions and resources for setting up and using the respective tool or technology. Feel free to explore and use these files as a guide for enhancing your Android device with new capabilities.
+
+# Alternatives
+
+Other interesting projects that can bring you Box86_64 in Termux:
+
+- [Box64Droid](https://github.com/Ilya114/Box64Droid)
+
+- [AnBox86](https://github.com/lowspecman420/AnBox86)
+
+# License and 3rd party
+
+For what you find in this git, [Unlicense](https://opensource.org/license/unlicense/).
+
+Other 3rd party apps and packages: [Termux-app](https://github.com/termux/Termux-app), [Termux-x11](https://github.com/termux/termux-x11), [Termux-Widget](https://github.com/termux/termux-widget), [Proot-distro](https://github.com/termux/proot-distro), [TUR repo](https://github.com/termux-user-repository/tur), [Box86](https://github.com/ptitSeb/box86), [Box64](https://github.com/ptitSeb/box64), [Wine](https://github.com/wine-mirror/wine), [Winetricks](https://github.com/Winetricks/winetricks), [PlayOnLinux](https://github.com/PlayOnLinux/POL-POM-4).
