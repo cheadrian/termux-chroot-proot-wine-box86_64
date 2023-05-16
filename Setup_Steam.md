@@ -26,4 +26,17 @@ For now, I don't write a direct guide. Please follow [the script](Scripts/Addons
 
 ## Alternative
 
-You can install and run the Windows version of Steam through the [PlayOnLinux](Setup_PlayOnLinux.md) or set it up with already installed Wine.
+You can install and run the Windows version of Steam through the [PlayOnLinux](Setup_PlayOnLinux.md) or set it up with already installed Wine. Use "-oldbigpicture -bigpicture -windowed -login someotherusername somepassword" as arguments. Check out [here](https://steamcommunity.com/discussions/forum/0/3758852249527312123/) for more support.
+
+Note: oldbigpicture will have low FPS without hardware acceleration.
+
+Example command using system installed wine:
+
+    wine Steam.exe -oldbigpicture -bigpicture -windowed -login anonymous
+    
+For the moment it doesn't display text, probably due missing fonts, but you can login and use the functions. Installing corefonts (Microsoft Core Fonts) and allfonts through winetricks / PlayOnLinux doesn't make a difference.
+
+    winetricks32 corefonts
+    winetricks32 allfonts
+	
+Other options to open Steam doesn't work with the current version, as it open just a black window.
