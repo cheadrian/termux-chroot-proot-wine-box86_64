@@ -31,15 +31,14 @@ case $yn in
 	* ) echo -e "${GREEN}Continue without uninstall.${WHITE}";;
 esac
 
-echo -e "${UYELLOW}This will delete everything inside .shortcuts and the Termux .bashrc script, so if you have something custom inside, please skip."
-echo -e "${URED}"
+echo -e "${UYELLOW}This will delete everything inside .shortcuts and the Termux .bashrc script, so if you have something custom inside, please skip.${URED}"
 read -p "Remove the created .shortcuts and .bashrc? (y/n)" yn
 echo -e "${WHITE}"
 
 case $yn in 
 	y ) echo -e "${GREEN}Delete .bashrc and .shortcuts.${WHITE}"
 	    rm -rf ~/.bashrc
-	    rm -rf ~/.shortcuts/*
+	    rm -rf ~/.shortcuts/*;;
 	* ) echo -e "${GREEN}Continue without deleting.${WHITE}";;
 esac
 
