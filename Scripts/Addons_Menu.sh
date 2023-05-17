@@ -23,6 +23,7 @@ echo -e "${TURQ}4. Termux: Set-up mesa-zink and compatible virgl server."
 echo -e "${TURQ}5. Proot: Compile and install GL4ES."
 echo -e "${TURQ}6. Termux: Create an alias to enter in Ubuntu proot."
 echo -e "${TURQ}7. Proot: Install native PlayOnLinux with Box86_64 support."
+echo -e "${UYELLOW}8. Termux: Remove everything (proot and / or packages)."
 echo -e "Anything else: exit.${WHITE}"
 
 read -p "Please select an option:" opt
@@ -73,6 +74,10 @@ case $opt in
 		chmod +x $PROOT_ROOT/Addons_Proot_PlayOnLinux_Box.sh
 		proot-distro login ubuntu_box86 --user root --shared-tmp --no-sysvipc -- bash -c "./Addons_Proot_PlayOnLinux_Box.sh"
 		rm $PROOT_ROOT/Addons_Proot_PlayOnLinux_Box.sh
+		exit;;
+	8 ) echo -e "${GREEN}Run the remove script.${WHITE}"
+	    chmod +x $SCRIPT_DIR/Remove_Everything.sh
+		$SCRIPT_DIR/Remove_Everything.sh
 		exit;;
 	* ) echo -e "${GREEN}Goodbye :)!.${WHITE}"
 		exit;;

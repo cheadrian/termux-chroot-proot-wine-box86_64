@@ -6,6 +6,7 @@ export WHITE='\033[0;37m'
 
 echo -e "${UYELLOW}If you are on Android 12+, make sure to fix Phantom Processes Kill. Check Setup_Proot.md for more details."
 echo -e "${GREEN}This script will install Termux:X11, virgl server for GPU acceleration, and inside an Ubuntu proot, Box86, Wine.${WHITE}"
+echo -e "${UYELLOW}If anything fails (due lack of network or other reason), you can run the remove script using './Scripts/Addons_Menu.sh' and try again.${WHITE}"
 read -n 1 -s -r -p "Press any key to continue."
 echo -e "${WHITE}"
 
@@ -98,4 +99,4 @@ rm -r Termux_X11
 rm termux-widget_v0.13.0+github-debug.apk
 
 echo -e "${GREEN}Enjoy. Check out the markdown files in the git for more details.${WHITE}"
-echo -e "${UYELLOW}You can install some addons, Box Bash, Steam, Zink, etc. using './Addons_Menu.sh'${WHITE}"
+echo -e "${UYELLOW}You can install some addons, Box Bash, Steam, Zink, etc. using './Scripts/Addons_Menu.sh'${WHITE}"
