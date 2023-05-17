@@ -48,9 +48,9 @@ case $opt in
 		chmod +x $PROOT_ROOT/Addons_Proot_Box86_64_Bash.sh
 		chmod +x $PROOT_ROOT/Addons_Proot_Steam.sh
 		proot-distro login ubuntu_box86 --user root --shared-tmp -- bash -i -c "./Addons_Proot_Steam.sh"
-		rm $PROOT_ROOT/Addons_Proot_Steam.sh
 		rm $PROOT_ROOT/Addons_Proot_Add_user.sh
 		rm $PROOT_ROOT/Addons_Proot_Box86_64_Bash.sh
+		rm $PROOT_ROOT/Addons_Proot_Steam.sh
 		echo -e "${GREEN}Add shortcut to Termux:Widget for Steam.${WHITE}"
 		echo -e '#!/bin/sh\necho "Please make sure you already running the XFCE and Termux:X11!"\nsleep 1\nproot-distro login ubuntu_box86 --user root --shared-tmp -- bash -i -c "sudo -E -H -u box box86 steam"' > ~/.shortcuts/LaunchSteam_proot
 		chmod +x ~/.shortcuts/LaunchSteam_proot
@@ -70,9 +70,15 @@ case $opt in
 		$SCRIPT_DIR/Addons_Termux_Ubuntu_Box.sh
 		exit;;
 	7 ) echo -e "${GREEN}Install the PlayOnLinux.${WHITE}"
+		cp $SCRIPT_DIR/Addons_Proot_Add_user.sh $PROOT_ROOT/Addons_Proot_Add_user.sh
+		cp $SCRIPT_DIR/Addons_Proot_Box86_64_Bash.sh $PROOT_ROOT/Addons_Proot_Box86_64_Bash.sh
 		cp $SCRIPT_DIR/Addons_Proot_PlayOnLinux_Box.sh $PROOT_ROOT/Addons_Proot_PlayOnLinux_Box.sh
+		chmod +x $PROOT_ROOT/Addons_Proot_Add_user.sh
+		chmod +x $PROOT_ROOT/Addons_Proot_Box86_64_Bash.sh
 		chmod +x $PROOT_ROOT/Addons_Proot_PlayOnLinux_Box.sh
 		proot-distro login ubuntu_box86 --user root --shared-tmp --no-sysvipc -- bash -c "./Addons_Proot_PlayOnLinux_Box.sh"
+		rm $PROOT_ROOT/Addons_Proot_Add_user.sh
+		rm $PROOT_ROOT/Addons_Proot_Box86_64_Bash.sh
 		rm $PROOT_ROOT/Addons_Proot_PlayOnLinux_Box.sh
 		exit;;
 	8 ) echo -e "${GREEN}Run the remove script.${WHITE}"
