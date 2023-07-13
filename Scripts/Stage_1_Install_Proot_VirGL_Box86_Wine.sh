@@ -31,18 +31,18 @@ case $yn in
 	* ) echo -e "${GREEN}Continue without installing ssh.${WHITE}";;
 esac
 
-echo -e "${GREEN}Download and install Termux:X11 deb."
+echo -e "${GREEN}Install Termux:X11 companion and apk."
 echo -e "${UYELLOW}Note: you can get the latest version from termux/termux-x11 Github.${WHITE}"
-wget https://nightly.link/termux/termux-x11/actions/artifacts/616957082.zip -O Termux_X11.zip
+pkg install -y termux-x11-nightly
+wget https://nightly.link/termux/termux-x11/actions/artifacts/800168706.zip -O Termux_X11.zip
 unzip Termux_X11.zip -d Termux_X11
 rm Termux_X11.zip
-dpkg -i Termux_X11/termux-x11-*.deb
 sed '/allow-external-apps/s/^# //' -i ~/.termux/termux.properties
 termux-reload-settings
 echo -e "${GREEN}Install Termux:X11 APK. Open APP installer.${WHITE}"
 read -n 1 -s -r -p "Press any key to continue."
 echo -e "${WHITE}"
-termux-open Termux_X11/app-debug.apk
+termux-open Termux_X11/app-universal-debug.apk
 
 echo -e "${GREEN}Create an Ubuntu proot."
 echo -e "${UYELLOW}Note: the proot alias is ubuntu_box86."
