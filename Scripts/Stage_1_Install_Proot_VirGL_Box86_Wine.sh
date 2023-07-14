@@ -34,7 +34,7 @@ esac
 echo -e "${GREEN}Install Termux:X11 companion and apk."
 echo -e "${UYELLOW}Note: you can get the latest version from termux/termux-x11 Github.${WHITE}"
 pkg install -y termux-x11-nightly
-wget https://nightly.link/termux/termux-x11/actions/artifacts/800168706.zip -O Termux_X11.zip
+wget https://nightly.link/termux/termux-x11/workflows/debug_build/master/termux-companion%20packages.zip -O Termux_X11.zip
 unzip Termux_X11.zip -d Termux_X11
 rm Termux_X11.zip
 sed '/allow-external-apps/s/^# //' -i ~/.termux/termux.properties
