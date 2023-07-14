@@ -99,4 +99,4 @@ rm -r Termux_X11
 rm termux-widget_v0.13.0+github-debug.apk
 
 echo -e "${GREEN}Enjoy. Check out the markdown files in the git for more details.${WHITE}"
-echo -e "${UYELLOW}You can install some addons, Box Bash, Steam, Zink, etc. using './Scripts/Addons_Menu.sh'${WHITE}"
+echo -e "${UYELLOW}You can install some addons, Box Bash, Steam, Zink, etc. using 'cd termux-chroot-proot-wine-box86_64' then './Scripts/Addons_Menu.sh'.${WHITE}"
