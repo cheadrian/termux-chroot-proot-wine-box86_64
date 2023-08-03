@@ -141,53 +141,53 @@ create_desktop_shortcuts(){
 	mkdir ~/Desktop
 	cd ~/Desktop
 	echo '[Desktop Entry]
-	Name=Wine32 Explorer
-	Exec=bash -c "wine explorer"
-	Icon=wine
-	Type=Application' > ~/Desktop/Wine32_Explorer.desktop
+Name=Wine32 Explorer
+Exec=bash -c "wine explorer"
+Icon=wine
+Type=Application' > ~/Desktop/Wine32_Explorer.desktop
 	chmod +x ~/Desktop/Wine32_Explorer.desktop
 	cp ~/Desktop/Wine32_Explorer.desktop /usr/share/applications/
 
 	echo '[Desktop Entry]
-	Name=Wine64 Explorer
-	Exec=bash -c "wine64 explorer"
-	Icon=wine
-	Type=Application' > ~/Desktop/Wine64_Explorer.desktop
+Name=Wine64 Explorer
+Exec=bash -c "wine64 explorer"
+Icon=wine
+Type=Application' > ~/Desktop/Wine64_Explorer.desktop
 	chmod +x ~/Desktop/Wine64_Explorer.desktop
 	cp ~/Desktop/Wine64_Explorer.desktop /usr/share/applications/
 
 	echo -e "${GREEN}Add desktop shortcuts for winetricks.${WHITE}":
 	echo '[Desktop Entry]
-	Name=Winetricks32 Explorer
-	Exec=bash -c "winetricks32 --gui"
-	Icon=wine
-	Type=Application' > ~/Desktop/Winetricks32_gui.desktop
+Name=Winetricks32 Explorer
+Exec=bash -c "winetricks32 --gui"
+Icon=wine
+Type=Application' > ~/Desktop/Winetricks32_gui.desktop
 	chmod +x ~/Desktop/Winetricks32_gui.desktop
 	cp ~/Desktop/Winetricks32_gui.desktop /usr/share/applications/
 
 	echo '[Desktop Entry]
-	Name=Winetricks64 Explorer
-	Exec=bash -c "winetricks64 --gui"
-	Icon=wine
-	Type=Application' > ~/Desktop/Winetricks64_gui.desktop
+Name=Winetricks64 Explorer
+Exec=bash -c "winetricks64 --gui"
+Icon=wine
+Type=Application' > ~/Desktop/Winetricks64_gui.desktop
 	chmod +x ~/Desktop/Winetricks64_gui.desktop
 	cp ~/Desktop/Winetricks64_gui.desktop /usr/share/applications/
 
 	echo -e "${GREEN}Add desktop shortcuts for glmark2 software and virpipe.${WHITE}"
 	echo '[Desktop Entry]
-	Name=GL2Mark software
-	Exec=bash -c "env MESA_GL_VERSION_OVERRIDE=4.5COMPAT glmark2"
-	Icon=gl2mark
-	Terminal=true
-	Type=Application' > ~/Desktop/GL2Mark_llvmpipe.desktop
+Name=GL2Mark software
+Exec=bash -c "env MESA_GL_VERSION_OVERRIDE=4.5COMPAT glmark2"
+Icon=gl2mark
+Terminal=true
+Type=Application' > ~/Desktop/GL2Mark_llvmpipe.desktop
 	chmod +x ~/Desktop/GL2Mark_llvmpipe.desktop
 
 	echo '[Desktop Entry]
-	Name=GL2Mark virpipe
-	Exec=bash -c "env MESA_GL_VERSION_OVERRIDE=4.5COMPAT GALLIUM_DRIVER=virpipe glmark2"
-	Icon=gl2mark
-	Terminal=true
-	Type=Application' > ~/Desktop/GL2Mark_virpipe.desktop
+Name=GL2Mark virpipe
+Exec=bash -c "env MESA_GL_VERSION_OVERRIDE=4.5COMPAT GALLIUM_DRIVER=virpipe glmark2"
+Icon=gl2mark
+Terminal=true
+Type=Application' > ~/Desktop/GL2Mark_virpipe.desktop
 	chmod +x ~/Desktop/GL2Mark_virpipe.desktop
 }
 
