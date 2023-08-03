@@ -15,6 +15,17 @@ echo -e "${UYELLOW}If anything fails (due to lack of network or other reason), y
 echo -e "Press any key to continue. \n"
 read -n 1 -s -r
 
+# Function to create a shortcut to the addons menu.
+create_addons_menu_alias(){
+	echo -e "${GREEN}Add 'Addons_Menu.sh' alias.${WHITE}"
+	if ! grep -q "addons_menu" ~/.bashrc; then
+		echo 'alias addons_menu="~/termux-chroot-proot-wine-box86_64/Scripts/Addons_Menu.sh"
+echo -e "addons_menu - Open the addons menu for box"' >> ~/.bashrc
+	fi
+	echo -e "${UYELLOW}Run 'source ~/.bashrc' to use 'addons_menu' command, or reopen Termux.${WHITE}"
+	echo -e "${UYELLOW}You can use this menu only to remove everything till installation is finished.${WHITE}"
+}
+
 # Function to update and install essential base packages, including x11-repo and optional SSH setup.
 update_install_base_packages(){
 	set -e
@@ -121,9 +132,11 @@ add_bash_alias_for_shortcuts(){
 	set -e
 	echo -e "${GREEN}Create an alias to make shortcuts usable inside Termux."
 	echo -e "${UYELLOW}Now can use 'start_box_proot' and 'kill_box_proot' in terminal, or by using Termux:Widget on the launcher.${WHITE}"
-	echo 'alias start_box_proot="sh ~/.shortcuts/LaunchXFCE_proot"
+	if ! grep -q "start_box_proot" ~/.bashrc; then
+		echo 'alias start_box_proot="sh ~/.shortcuts/LaunchXFCE_proot"
 alias kill_box_proot="sh ~/.shortcuts/KillXFCE_proot"
 echo -e "start_box_proot - Launch the proot XFCE, Termux:X11\nkill_box_proot - Kill virgl server, pulseaudio, etc."' >> ~/.bashrc
+	fi
 	echo -e "${UYELLOW}Do not forget to 'source ~/.bashrc' after script finish.${WHITE}"
 }
 
@@ -158,6 +171,7 @@ function rftc() {
 }
 
 # Run everything in sequencial order
+rftc create_addons_menu_alias 4
 rftc update_install_base_packages 2
 rftc install_termux_x11_pkg_app 10
 rftc setup_ubuntu_proot 2
@@ -167,4 +181,5 @@ rftc add_bash_alias_for_shortcuts 2
 rftc cleanup 1
 
 echo -e "${GREEN}Enjoy. Check out the markdown files in the git for more details.${WHITE}"
-echo -e "${UYELLOW}You can install some addons, Box Bash, Steam, Zink, etc. using: 'cd termux-chroot-proot-wine-box86_64' then './Scripts/Addons_Menu.sh'.${WHITE}"
+echo -e "${UYELLOW}Don't forget to run 'source ~/.bashrc'!${WHITE}"
+echo -e "${UYELLOW}You can install some addons, Box Bash, Steam, Zink, etc. using 'addons_menu' command.${WHITE}"
