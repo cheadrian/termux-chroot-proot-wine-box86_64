@@ -146,7 +146,7 @@ function rftc() {
 
 # Run everything in sequencial order
 rftc update_install_base_packages 2
-rftc install_termux_x11_pkg_app 2
+rftc install_termux_x11_pkg_app 10
 rftc setup_ubuntu_proot 2
 rftc install_termux_widget_app 2
 rftc create_shortcuts_for_widget 2
