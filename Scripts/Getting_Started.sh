@@ -22,4 +22,10 @@ cd termux-chroot-proot-wine-box86_64/Scripts
 echo -e "${GREEN}Run the install script.${WHITE}"
 sleep 1
 chmod +x *.sh
+
+if ! grep -q "addons_menu" ~/.bashrc; then
+	echo 'alias addons_menu="~/termux-chroot-proot-wine-box86_64/Scripts/Addons_Menu.sh"
+echo -e "addons_menu - Open the addons menu for box"' >> ~/.bashrc
+fi
+
 ./Stage_1_Install_Proot_VirGL_Box86_Wine.sh
