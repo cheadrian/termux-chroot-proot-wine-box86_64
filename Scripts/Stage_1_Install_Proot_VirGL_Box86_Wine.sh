@@ -1,5 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-set -e
 export GREEN='\033[0;32m'
 export URED='\033[4;31m'
 export UYELLOW='\033[4;33m'
@@ -19,17 +18,17 @@ read -n 1 -s -r
 update_install_base_packages(){
 	echo -e "${GREEN}Update and upgrade packages.${WHITE}"
 	pkg update -y && pkg upgrade -y
-	
+
 	echo -e "${GREEN}Add x11-repo.${WHITE}"
 	pkg install -y x11-repo 
 	pkg update -y
-	
+
 	echo -e "${GREEN}Install virgl, pulseaudio, xwayland, proot, wget.${WHITE}"
 	pkg install -y pulseaudio virglrenderer-android xwayland proot-distro wget unzip 
-	
+
 	echo -e "${UYELLOW} Optional: Do you want to setup a ssh server (openssh)? (y/n)${WHITE}"
 	read yn
-	
+
 	case $yn in 
 		y ) echo -e "${GREEN}Install openssh...${WHITE}"
 			apt install -y openssh
@@ -83,7 +82,7 @@ install_termux_widget_app(){
 # It creates two scripts, 'LaunchXFCE_proot' and 'KillXFCE_proot,' in the ~/.shortcuts.
 create_shortcuts_for_widget(){
 	echo -e "${GREEN}Add shortcuts to launch Termux:X11 app, pulseaudio, virgl server, and XFCE in proot.${WHITE}"
-	
+
 	mkdir -p ~/.shortcuts
 	echo '#!/bin/sh
 	killall -9 termux-x11 Xwayland pulseaudio virgl_test_server_android virgl_test_server
@@ -96,9 +95,9 @@ create_shortcuts_for_widget(){
 	virgl_test_server_android &
 	proot-distro login ubuntu_box86 --user root --shared-tmp --no-sysvipc -- bash -c "export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713; dbus-launch --exit-with-session startxfce4"' > ~/.shortcuts/LaunchXFCE_proot
 	chmod +x ~/.shortcuts/LaunchXFCE_proot
-	
+
 	echo -e "${GREEN}Create a kill all shortcut.${WHITE}"
-	
+
 	echo '#!/bin/sh
 	killall -9 termux-x11 Xwayland pulseaudio virgl_test_server_android virgl_test_server
 	termux-wake-unlock; termux-toast "Stopping X11, virgl, etc."' > ~/.shortcuts/KillXFCE_proot
@@ -125,25 +124,24 @@ cleanup(){
 
 # Function to run a function, perform exit status check, and pause with read timeout.
 function rftc() {
-    local func_name=$1
-    local timeout=$2
+	local func_name=$1
+	local timeout=$2
 
-    echo -e "${GREEN}Running step: ${func_name}.${WHITE}"
-    $func_name
-	
+	echo -e "${GREEN}Running step: ${func_name}.${WHITE}"
+	$func_name
+
 	# Check if every command inside the function is executed successfully.
-    if [ $? -eq 0 ]; then
-        echo -e "${GREEN}${func_name} completed successfully.${WHITE}"
-    else
-        echo -e "${URED}${func_name} encountered an error.${WHITE}"
+	if [ $? -eq 0 ]; then
+		echo -e "${GREEN}${func_name} completed successfully.${WHITE}"
+		echo -e "${GREEN}Pausing for ${timeout} seconds...${WHITE}"
+		echo -e "\n\n\n"
+		sleep $timeout
+	else
+		echo -e "${URED}${func_name} encountered an error.${WHITE}"
 		echo -e "${UYELLOW}Please use the 'cd termux-chroot-proot-wine-box86_64', './Scripts/Addons_Menu.sh' and select remove script or delete Termux App data and try again.${WHITE}"
 		echo -e "Error can be from network, incompatibility, outdated 'X11_ARTIFACT_LINK' or script problem due Termux / Android updates."
 		exit 2
-    fi
-
-    echo -e "${GREEN}Pausing for ${timeout} seconds...${WHITE}"
-	echo -e "Press any key to skip the pause."
-    read -t $timeout -n 1 -s -r
+	fi
 }
 
 # Run everything in sequencial order
