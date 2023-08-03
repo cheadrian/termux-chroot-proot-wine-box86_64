@@ -12,9 +12,8 @@ export X11_ARTIFACT_LINK='https://nightly.link/termux/termux-x11/actions/artifac
 echo -e "${UYELLOW}If you are on Android 12+, make sure to fix Phantom Processes Kill. Check Setup_Proot.md for more details."
 echo -e "${GREEN}This script will install Termux:X11, virgl server for GPU acceleration, and inside an Ubuntu proot, Box86, Wine.${WHITE}"
 echo -e "${UYELLOW}If anything fails (due to lack of network or other reason), you can run the remove script using './Scripts/Addons_Menu.sh' and try again.${WHITE}"
-read -n 1 -s -r -p "Press any key to continue."
-echo -e "${WHITE}"
-
+echo -e "Press any key to continue."
+read -n 1 -s -r
 
 # Function to update and install essential base packages, including x11-repo and optional SSH setup.
 update_install_base_packages(){
@@ -28,9 +27,8 @@ update_install_base_packages(){
 	echo -e "${GREEN}Install virgl, pulseaudio, xwayland, proot, wget.${WHITE}"
 	pkg install -y pulseaudio virglrenderer-android xwayland proot-distro wget unzip 
 	
-	echo -e "${UYELLOW}"
-	read -p "Optional: Do you want to setup a ssh server (openssh)? (y/n) " yn
-	echo -e "${WHITE}"
+	echo -e "${UYELLOW} Optional: Do you want to setup a ssh server (openssh)? (y/n)${WHITE}"
+	read yn
 	
 	case $yn in 
 		y ) echo -e "${GREEN}Install openssh...${WHITE}"
