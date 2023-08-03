@@ -96,22 +96,22 @@ create_shortcuts_for_widget(){
 
 	mkdir -p ~/.shortcuts
 	echo '#!/bin/sh
-	killall -9 termux-x11 Xwayland pulseaudio virgl_test_server_android virgl_test_server
-	termux-wake-lock; termux-toast "Starting X11"
-	am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity
-	XDG_RUNTIME_DIR=${TMPDIR} termux-x11 :0 -ac & 
-	sleep 3
-	pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
-	pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1
-	virgl_test_server_android &
-	proot-distro login ubuntu_box86 --user root --shared-tmp --no-sysvipc -- bash -c "export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713; dbus-launch --exit-with-session startxfce4"' > ~/.shortcuts/LaunchXFCE_proot
+killall -9 termux-x11 Xwayland pulseaudio virgl_test_server_android virgl_test_server
+termux-wake-lock; termux-toast "Starting X11"
+am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity
+XDG_RUNTIME_DIR=${TMPDIR} termux-x11 :0 -ac & 
+sleep 3
+pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
+pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1
+virgl_test_server_android &
+proot-distro login ubuntu_box86 --user root --shared-tmp --no-sysvipc -- bash -c "export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713; dbus-launch --exit-with-session startxfce4"' > ~/.shortcuts/LaunchXFCE_proot
 	chmod +x ~/.shortcuts/LaunchXFCE_proot
 
 	echo -e "${GREEN}Create a kill all shortcut.${WHITE}"
 
 	echo '#!/bin/sh
-	killall -9 termux-x11 Xwayland pulseaudio virgl_test_server_android virgl_test_server
-	termux-wake-unlock; termux-toast "Stopping X11, virgl, etc."' > ~/.shortcuts/KillXFCE_proot
+killall -9 termux-x11 Xwayland pulseaudio virgl_test_server_android virgl_test_server 
+termux-wake-unlock; termux-toast "Stopping X11, virgl, etc."' > ~/.shortcuts/KillXFCE_proot
 	chmod +x ~/.shortcuts/KillXFCE_proot
 }
 
@@ -122,8 +122,8 @@ add_bash_alias_for_shortcuts(){
 	echo -e "${GREEN}Create an alias to make shortcuts usable inside Termux."
 	echo -e "${UYELLOW}Now can use 'start_box_proot' and 'kill_box_proot' in terminal, or by using Termux:Widget on the launcher.${WHITE}"
 	echo 'alias start_box_proot="sh ~/.shortcuts/LaunchXFCE_proot"
-	alias kill_box_proot="sh ~/.shortcuts/KillXFCE_proot"
-	echo -e "start_box_proot - Launch the proot XFCE, Termux:X11\nkill_box_proot - Kill virgl server, pulseaudio, etc."' >> ~/.bashrc
+alias kill_box_proot="sh ~/.shortcuts/KillXFCE_proot"
+echo -e "start_box_proot - Launch the proot XFCE, Termux:X11\nkill_box_proot - Kill virgl server, pulseaudio, etc."' >> ~/.bashrc
 	echo -e "${UYELLOW}Do not forget to 'source ~/.bashrc' after script finish.${WHITE}"
 }
 
