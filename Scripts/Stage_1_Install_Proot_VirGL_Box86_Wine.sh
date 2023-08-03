@@ -16,6 +16,7 @@ read -n 1 -s -r
 
 # Function to update and install essential base packages, including x11-repo and optional SSH setup.
 update_install_base_packages(){
+	set -e
 	echo -e "${GREEN}Update and upgrade packages.${WHITE}"
 	pkg update -y && pkg upgrade -y
 
@@ -40,7 +41,8 @@ update_install_base_packages(){
 
 # Function to install Termux:X11 companion and APK.
 # This function facilitates the installation of Termux:X11 companion and APK.
-install_termux_x11_pkg_app(){	
+install_termux_x11_pkg_app(){
+	set -e	
 	echo -e "${GREEN}Install Termux:X11 companion and apk."
 	echo -e "${UYELLOW}Note: you can get the latest version from termux/termux-x11 Github.${WHITE}"
 	pkg install -y termux-x11-nightly
@@ -55,6 +57,7 @@ install_termux_x11_pkg_app(){
 
 # Function to create a proot environment for Ubuntu and install necessary components.
 setup_ubuntu_proot(){
+	set -e
 	echo -e "${GREEN}Create an Ubuntu proot."
 	echo -e "${UYELLOW}Note: the proot alias is ubuntu_box86."
 	echo -e "${GREEN}Path: \$PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu_box86/${WHITE}"
@@ -71,6 +74,7 @@ setup_ubuntu_proot(){
 # User prompted to setup optional Termux:API for toast messages. 
 # Downloads and opens apk for installation.
 install_termux_widget_app(){
+	set -e
 	echo -e "${GREEN}Create shortcuts compatible with Termux:Widget."
 	echo -e "${UYELLOW}Download and install Termux:Widget from Github and add the shortcut list widget on the launcher."
 	echo -e "${UYELLOW}Optional: for toast message at start, set up the Termux:API.${WHITE}"
@@ -81,6 +85,7 @@ install_termux_widget_app(){
 # Function to create shortcuts for launching and killing Termux:X11, pulseaudio, virgl server, and XFCE using proot.
 # It creates two scripts, 'LaunchXFCE_proot' and 'KillXFCE_proot,' in the ~/.shortcuts.
 create_shortcuts_for_widget(){
+	set -e
 	echo -e "${GREEN}Add shortcuts to launch Termux:X11 app, pulseaudio, virgl server, and XFCE in proot.${WHITE}"
 
 	mkdir -p ~/.shortcuts
@@ -107,6 +112,7 @@ create_shortcuts_for_widget(){
 # This function creates two aliases, 'start_box_proot' and 'kill_box_proot'. 
 # Allow users to use the shortcuts conveniently inside Termux.
 add_bash_alias_for_shortcuts(){
+	set -e
 	echo -e "${GREEN}Create an alias to make shortcuts usable inside Termux."
 	echo -e "${UYELLOW}Now can use 'start_box_proot' and 'kill_box_proot' in terminal, or by using Termux:Widget on the launcher.${WHITE}"
 	echo 'alias start_box_proot="sh ~/.shortcuts/LaunchXFCE_proot"
@@ -128,7 +134,7 @@ function rftc() {
 	local timeout=$2
 
 	echo -e "${GREEN}Running step: ${func_name}.${WHITE}"
-	$func_name
+	($func_name)
 
 	# Check if every command inside the function is executed successfully.
 	if [ $? -eq 0 ]; then
