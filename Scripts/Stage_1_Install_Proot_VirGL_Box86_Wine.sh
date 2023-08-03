@@ -112,7 +112,7 @@ add_bash_alias_for_shortcuts(){
 	echo 'alias start_box_proot="sh ~/.shortcuts/LaunchXFCE_proot"
 	alias kill_box_proot="sh ~/.shortcuts/KillXFCE_proot"
 	echo -e "start_box_proot - Launch the proot XFCE, Termux:X11\nkill_box_proot - Kill virgl server, pulseaudio, etc."' >> ~/.bashrc
-	echo '${UYELLOW}Do not forget to "source ~/.bashrc" after script finish.${WHITE}'
+	echo -e '${UYELLOW}Do not forget to "source ~/.bashrc" after script finish.${WHITE}'
 }
 
 # This will cleanup files that are not needed anymore.
