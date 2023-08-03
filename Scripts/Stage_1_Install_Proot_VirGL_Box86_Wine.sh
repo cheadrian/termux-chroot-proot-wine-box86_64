@@ -11,7 +11,7 @@ export X11_ARTIFACT_LINK='https://nightly.link/termux/termux-x11/actions/artifac
 echo -e "${UYELLOW}If you are on Android 12+, make sure to fix Phantom Processes Kill. Check Setup_Proot.md for more details."
 echo -e "${GREEN}This script will install Termux:X11, virgl server for GPU acceleration, and inside an Ubuntu proot, Box86, Wine.${WHITE}"
 echo -e "${UYELLOW}If anything fails (due to lack of network or other reason), you can run the remove script using './Scripts/Addons_Menu.sh' and try again.${WHITE}"
-echo -e "Press any key to continue."
+echo -e "Press any key to continue. \n"
 read -n 1 -s -r
 
 # Function to update and install essential base packages, including x11-repo and optional SSH setup.
@@ -134,7 +134,7 @@ function rftc() {
 	if [ $? -eq 0 ]; then
 		echo -e "${GREEN}${func_name} completed successfully.${WHITE}"
 		echo -e "${GREEN}Pausing for ${timeout} seconds...${WHITE}"
-		echo -e "\n\n\n"
+		echo -e "\n"
 		sleep $timeout
 	else
 		echo -e "${URED}${func_name} encountered an error.${WHITE}"
