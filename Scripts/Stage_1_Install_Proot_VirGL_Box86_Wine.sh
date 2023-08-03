@@ -152,7 +152,7 @@ function rftc() {
 	else
 		echo -e "${URED}${func_name} encountered an error.${WHITE}"
 		echo -e "${UYELLOW}Please use the 'cd termux-chroot-proot-wine-box86_64', './Scripts/Addons_Menu.sh' and select remove script or delete Termux App data and try again.${WHITE}"
-		echo -e "Error can be from network, incompatibility, outdated 'X11_ARTIFACT_LINK' or script problem due Termux / Android updates."
+		echo -e "Error can be from network, incompatibility, outdated 'X11_ARTIFACT_LINK', 'COMPANION_ARTIFACT_LINK' or script problem due Termux / Android updates."
 		exit 2
 	fi
 }
