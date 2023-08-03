@@ -5,7 +5,7 @@ export UYELLOW='\033[4;33m'
 export WHITE='\033[0;37m' 
 
 pkg update -y
-echo -e "${UYELLOW}Do you want to change the Termux repo to a faster one? (y/n)${WHITE}"
+echo -e "${UYELLOW}Do you want to change the Termux repo to a faster one? Note: use SPACE to select region. (y/n)${WHITE}"
 read yn
 
 case $yn in 
