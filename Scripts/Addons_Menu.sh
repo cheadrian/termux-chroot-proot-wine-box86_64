@@ -23,7 +23,8 @@ echo -e "${TURQ}4. Termux: Set-up mesa-zink and compatible virgl server."
 echo -e "${TURQ}5. Proot: Compile and install GL4ES."
 echo -e "${TURQ}6. Termux: Create an alias to enter in Ubuntu proot."
 echo -e "${TURQ}7. Proot: Install native PlayOnLinux with Box86_64 support."
-echo -e "${UYELLOW}8. Termux: Remove everything (proot and / or packages)."
+echo -e "${TURQ}8. Proot: Install Mesa Turnip Adreno KGSL compatible driver."
+echo -e "${UYELLOW}9. Termux: Remove everything (proot and / or packages)."
 echo -e "Anything else: exit.${WHITE}"
 
 read -p "Please select an option:" opt
@@ -81,7 +82,13 @@ case $opt in
 		rm $PROOT_ROOT/Addons_Proot_Box86_64_Bash.sh
 		rm $PROOT_ROOT/Addons_Proot_PlayOnLinux_Box.sh
 		exit;;
-	8 ) echo -e "${GREEN}Run the remove script.${WHITE}"
+	8 ) echo -e "${GREEN}Install the Mesa Turnip KGSL driver in proot.${WHITE}"
+		cp $SCRIPT_DIR/Addons_Proot_Mesa_Turnip.sh $PROOT_ROOT/Addons_Proot_Mesa_Turnip.sh
+		chmod +x $PROOT_ROOT/Addons_Proot_Mesa_Turnip.sh
+		proot-distro login ubuntu_box86 --user root --shared-tmp --no-sysvipc -- bash -c "./Addons_Proot_Mesa_Turnip.sh"
+		rm $PROOT_ROOT/Addons_Proot_Mesa_Turnip.sh
+		exit;;
+	9 ) echo -e "${GREEN}Run the remove script.${WHITE}"
 	    chmod +x $SCRIPT_DIR/Remove_Everything.sh
 		$SCRIPT_DIR/Remove_Everything.sh
 		exit;;
