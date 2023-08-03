@@ -6,7 +6,8 @@ export WHITE='\033[0;37m'
 
 # Note: if you update the artifact link, please check the zip has the same structure.
 # Otherwise you need to update the 'install_termux_x11_pkg_app' function.
-export X11_ARTIFACT_LINK='https://nightly.link/termux/termux-x11/actions/artifacts/800168706.zip'
+export X11_ARTIFACT_LINK='https://nightly.link/termux/termux-x11/actions/artifacts/839861151.zip'
+export COMPANION_ARTIFACT_LINK='https://nightly.link/termux/termux-x11/actions/artifacts/839861142.zip'
 
 echo -e "${UYELLOW}If you are on Android 12+, make sure to fix Phantom Processes Kill. Check Setup_Proot.md for more details."
 echo -e "${GREEN}This script will install Termux:X11, virgl server for GPU acceleration, and inside an Ubuntu proot, Box86, Wine.${WHITE}"
@@ -45,10 +46,15 @@ install_termux_x11_pkg_app(){
 	set -e	
 	echo -e "${GREEN}Install Termux:X11 companion and apk."
 	echo -e "${UYELLOW}Note: you can get the latest version from termux/termux-x11 Github.${WHITE}"
-	pkg install -y termux-x11-nightly
+	# For the moment, use version from artifact to make sure it is compatible with app
+	# pkg install -y termux-x11-nightly
 	wget $X11_ARTIFACT_LINK -O Termux_X11.zip
+	wget $COMPANION_ARTIFACT_LINK -O Termux_X11_companion.zip
 	unzip Termux_X11.zip -d Termux_X11
+	unzip Termux_X11_companion.zip -d Termux_X11_companion
 	rm Termux_X11.zip
+	rm Termux_X11_companion.zip
+	dpkg -i Termux_X11_companion/termux-x11-nightly-*-all.deb
 	sed '/allow-external-apps/s/^# //' -i ~/.termux/termux.properties
 	termux-reload-settings
 	echo -e "${GREEN}Install Termux:X11 APK. Open APP installer.${WHITE}"
@@ -125,6 +131,7 @@ add_bash_alias_for_shortcuts(){
 cleanup(){
 	echo -e "${GREEN}Clean downloaded resources (Termux_X11, Termux_widget, etc.).${WHITE}"
 	rm -r Termux_X11
+	rm -r Termux_X11_companion
 	rm termux-widget_v0.13.0+github-debug.apk
 }
 
