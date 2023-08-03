@@ -28,7 +28,9 @@ update_install_base_packages(){
 	echo -e "${GREEN}Install virgl, pulseaudio, xwayland, proot, wget.${WHITE}"
 	pkg install -y pulseaudio virglrenderer-android xwayland proot-distro wget unzip 
 	
+	echo -e "${UYELLOW}"
 	read -p "Optional: Do you want to setup a ssh server (openssh)? (y/n) " yn
+	echo -e "${WHITE}"
 	
 	case $yn in 
 		y ) echo -e "${GREEN}Install openssh...${WHITE}"
