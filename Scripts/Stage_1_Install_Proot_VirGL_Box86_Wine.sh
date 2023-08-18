@@ -8,12 +8,35 @@ export WHITE='\033[0;37m'
 # Otherwise you need to update the 'install_termux_x11_pkg_app' function.
 export X11_APK_LINK='https://github.com/termux/termux-x11/releases/download/1.03.00/app-universal-debug.apk'
 export X11_COMPANION_LINK='https://github.com/termux/termux-x11/releases/download/1.03.00/companion.packages.zip'
+export SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 echo -e "${UYELLOW}If you are on Android 12+, make sure to fix Phantom Processes Kill. Check Setup_Proot.md for more details."
 echo -e "${GREEN}This script will install Termux:X11, virgl server for GPU acceleration, and inside an Ubuntu proot, Box86, Wine.${WHITE}"
 echo -e "${UYELLOW}If anything fails (due to lack of network or other reason), you can run the remove script using './Scripts/Addons_Menu.sh' and try again.${WHITE}"
 echo -e "Press any key to continue. \n"
 read -n 1 -s -r
+
+# Verify if the script was run before and let user to remove everything
+check_if_is_installed(){
+	if  [ -e "$PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu_box86" ] || \
+		[ -e "~/.shortcuts/KillXFCE_proot" ] || \
+		[ -e "~/.shortcuts/LaunchXFCE_proot" ]; then
+			echo -e "${UYELLOW}Looks like there was an attempt to install this.${WHITE}"
+			echo -e "${GREEN}Recommended: remove everything and start again.${WHITE}"
+			echo -e "${UYELLOW}Do you want to remove everything? (y/n)${WHITE}"
+			read yn
+			case $yn in
+				y ) echo -e "${UYELLOW}Running removal script.${WHITE}"
+					chmod +x $SCRIPT_DIR/Remove_Everything.sh
+					$SCRIPT_DIR/Remove_Everything.sh
+					echo -e "${GREEN}Now you can run the script again.${WHITE}"
+					;;
+				*)
+					echo -e "${UYELLOW}Continue to install. Note: script might fail if proot is already set up.${WHITE}"
+					;;
+			esac
+	fi
+}
 
 # Function to create a shortcut to the addons menu.
 create_addons_menu_alias(){
@@ -160,6 +183,7 @@ function rftc() {
 }
 
 # Run everything in sequencial order
+rftc check_if_is_installed 1
 rftc create_addons_menu_alias 4
 rftc update_install_base_packages 2
 rftc install_termux_x11_pkg_app 10
