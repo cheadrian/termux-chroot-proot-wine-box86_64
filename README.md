@@ -26,6 +26,8 @@ This script will:
 
 Current versions: Wine 8.7 from [Wine-Builds](https://github.com/Kron4ek/Wine-Builds), latest Box86_64 from [ryanfortner](https://github.com/ryanfortner), [Termux:Widget v0.13](https://github.com/termux/termux-widget/releases/tag/v0.13.0) (Github), [Termux:X11 v1.02.07](https://github.com/termux/termux-x11/actions/runs/4524914392) (Github).
 
+Now you can pick from Wine versions: 8.13, 8.7, 7.22, 6.23, 5.22.
+
 ## Docs
 
 ![Collage with Call of Duty 2, Euro Truck Simulator, Portal](https://raw.githubusercontent.com/cheadrian/termux-chroot-proot-wine-box86_64/main/Games_Collage.png)

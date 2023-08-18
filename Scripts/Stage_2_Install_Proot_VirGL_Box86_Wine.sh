@@ -46,20 +46,31 @@ install_packages_for_box86_box64(){
 	apt install -y cabextract libfreetype6 libfreetype6:armhf libfontconfig libfontconfig:armhf libxext6 libxext6:armhf libxinerama-dev libxinerama-dev:armhf libxxf86vm1 libxxf86vm1:armhf libxrender1 libxrender1:armhf libxcomposite1 libxcomposite1:armhf libxrandr2 libxrandr2:armhf libxi6 libxi6:armhf libxcursor1 libxcursor1:armhf libvulkan-dev libvulkan-dev:armhf libgnutls30 libgnutls30:armhf libasound2:armhf libglib2.0-0:armhf libgphoto2-6:armhf libgphoto2-port12:armhf libgstreamer-plugins-base1.0-0:armhf libgstreamer1.0-0:armhf libldap-common libldap-common:armhf libopenal1 libopenal1:armhf libpcap0.8:armhf libpulse0 libpulse0:armhf libsane1:armhf libudev1:armhf libusb-1.0-0:armhf libvkd3d1:armhf libx11-6:armhf libasound2-plugins:armhf ocl-icd-libopencl1:armhf libncurses6:armhf libncurses5:armhf libcap2-bin:armhf libcups2:armhf libdbus-1-3:armhf libfontconfig1:armhf libglu1-mesa:armhf libglu1:armhf libgssapi-krb5-2:armhf libkrb5-3:armhf libodbc1:armhf libosmesa6:armhf libsdl2-2.0-0:armhf libv4l-0:armhf libxfixes3:armhf libxinerama1:armhf
 }
 
-# This bash function downloads Wine 8.7 for x86 and x64 architectures from the Wine-Builds repository,
+# This bash function downloads Wine for x86 and x64 architectures from the Wine-Builds repository,
 # then unpacks the downloaded archives and moves the contents 
 # to separate directories named "wine" for x86 and "wine64" for x64.
+# Default version: 8.7.
 install_wine86_wine64(){
 	set -e
-	echo -e "${GREEN}Download Wine 8.7 x86 and x64 from Wine-Builds.${WHITE}"
-	wget https://github.com/Kron4ek/Wine-Builds/releases/download/8.7/wine-8.7-x86.tar.xz
-	wget https://github.com/Kron4ek/Wine-Builds/releases/download/8.7/wine-8.7-amd64.tar.xz
-	echo -e "${GREEN}Unpack Wine 8.7 x86 to ~/wine and x86 to ~/wine64.${WHITE}"
-	tar xvf wine-8.7-x86.tar.xz
-	tar xvf wine-8.7-amd64.tar.xz
-	rm wine-8.7-x86.tar.xz wine-8.7-amd64.tar.xz
-	mv wine-8.7-x86 wine
-	mv wine-8.7-amd64 wine64
+	known_versions=("8.13" "8.7" "7.22" "6.23" "5.22")
+	echo -e "${GREEN}Possible Wine versions: ${known_versions[@]}${WHITE}"
+	echo -e "${UYELLOW}Check Kron4ek/Wine-Builds for released versions.${WHITE}"
+	echo -e "${UYELLOW}Enter the Wine version you want to install, (default 8.7):${WHITE}"
+	version_regex="^[0-9]+\.[0-9]{2}$"
+	read version
+	if ! [[ $version =~ $version_regex ]]; then
+		echo -e "${UYELLOW}Invalid version format. Defaulting to 8.7.${WHITE}"
+		version="8.7"
+	fi
+	echo -e "${GREEN}Downloading Wine $version x86 and x64 from Wine-Builds.${WHITE}"
+	wget "https://github.com/Kron4ek/Wine-Builds/releases/download/$version/wine-$version-x86.tar.xz"
+	wget "https://github.com/Kron4ek/Wine-Builds/releases/download/$version/wine-$version-amd64.tar.xz"
+	echo -e "${GREEN}Unpacking Wine $version x86 to ~/wine and x86 to ~/wine64.${WHITE}"
+	tar xvf "wine-$version-x86.tar.xz"
+	tar xvf "wine-$version-amd64.tar.xz"
+	rm "wine-$version-x86.tar.xz" "wine-$version-amd64.tar.xz"
+	mv "wine-$version-x86" wine
+	mv "wine-$version-amd64" wine64
 }
 
 # Adds necessary paths for Box86 and Box64 to the user's .bashrc file. 
