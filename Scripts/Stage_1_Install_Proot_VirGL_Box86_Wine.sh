@@ -31,17 +31,13 @@ update_install_base_packages(){
 	set -e
 	echo -e "${GREEN}Update and upgrade packages.${WHITE}"
 	pkg update -y && pkg upgrade -y
-
 	echo -e "${GREEN}Add x11-repo.${WHITE}"
 	pkg install -y x11-repo 
 	pkg update -y
-
 	echo -e "${GREEN}Install virgl, pulseaudio, xwayland, proot, wget.${WHITE}"
 	pkg install -y pulseaudio virglrenderer-android xwayland proot-distro wget unzip 
-
 	echo -e "${UYELLOW} Optional: Do you want to setup a ssh server (openssh)? (y/n)${WHITE}"
 	read yn
-
 	case $yn in 
 		y ) echo -e "${GREEN}Install openssh...${WHITE}"
 			apt install -y openssh
@@ -76,7 +72,6 @@ setup_ubuntu_proot(){
 	echo -e "${UYELLOW}Note: the proot alias is ubuntu_box86."
 	echo -e "${GREEN}Path: \$PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu_box86/${WHITE}"
 	proot-distro install ubuntu --override-alias ubuntu_box86
-
 	echo -e "${GREEN}Put the second stage script inside the proot.${WHITE}"
 	cp Stage_2_Install_Proot_VirGL_Box86_Wine.sh $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu_box86/root/Stage_2_Install_Proot_VirGL_Box86_Wine.sh
 	chmod +x $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu_box86/root/Stage_2_Install_Proot_VirGL_Box86_Wine.sh
@@ -101,7 +96,6 @@ install_termux_widget_app(){
 create_shortcuts_for_widget(){
 	set -e
 	echo -e "${GREEN}Add shortcuts to launch Termux:X11 app, pulseaudio, virgl server, and XFCE in proot.${WHITE}"
-
 	mkdir -p ~/.shortcuts
 	echo '#!/bin/sh
 killall -9 termux-x11 Xwayland pulseaudio virgl_test_server_android virgl_test_server
@@ -114,9 +108,7 @@ pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymou
 virgl_test_server_android &
 proot-distro login ubuntu_box86 --user root --shared-tmp --no-sysvipc -- bash -c "export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713; dbus-launch --exit-with-session startxfce4"' > ~/.shortcuts/LaunchXFCE_proot
 	chmod +x ~/.shortcuts/LaunchXFCE_proot
-
 	echo -e "${GREEN}Create a kill all shortcut.${WHITE}"
-
 	echo '#!/bin/sh
 killall -9 termux-x11 Xwayland pulseaudio virgl_test_server_android virgl_test_server 
 termux-wake-unlock; termux-toast "Stopping X11, virgl, etc."' > ~/.shortcuts/KillXFCE_proot
@@ -151,10 +143,8 @@ cleanup(){
 function rftc() {
 	local func_name=$1
 	local timeout=$2
-
 	echo -e "${GREEN}Running step: ${func_name}.${WHITE}"
 	($func_name)
-
 	# Check if every command inside the function is executed successfully.
 	if [ $? -eq 0 ]; then
 		echo -e "${GREEN}${func_name} completed successfully.${WHITE}"

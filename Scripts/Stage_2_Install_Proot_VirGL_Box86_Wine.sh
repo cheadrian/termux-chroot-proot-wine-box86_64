@@ -15,7 +15,6 @@ read -n 1 -s -r
 update_install_base_packages(){
 	set -e
 	echo -e "${GREEN}Install base packages and XFCE4.${WHITE}"
-
 	apt update -y && apt upgrade -y
 	apt install -y dialog apt-utils psmisc htop software-properties-common wget mesa-utils glmark2 dbus-x11 xfce4 xfce4-terminal
 }
@@ -26,15 +25,12 @@ update_install_base_packages(){
 install_box86_box64_from_repo(){
 	set -e
 	echo -e "${GREEN}Adding Box86 and Box64 repo in sources.list.${WHITE}"
-
 	wget https://ryanfortner.github.io/box64-debs/box64.list -O /etc/apt/sources.list.d/box64.list
 	wget -qO- https://ryanfortner.github.io/box64-debs/KEY.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/box64-debs-archive-keyring.gpg
 	wget https://ryanfortner.github.io/box86-debs/box86.list -O /etc/apt/sources.list.d/box86.list
 	wget -qO- https://ryanfortner.github.io/box86-debs/KEY.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/box86-debs-archive-keyring.gpg 
-
 	echo -e "${GREEN}Adding ARMHF arch for Box86.${WHITE}"
 	dpkg --add-architecture armhf
-
 	echo -e "${GREEN}Install the Box86 and Box64 packages.${WHITE}"
 	apt update -y
 	apt install box64-android libc6 libc6:armhf box86-android:armhf -y
@@ -58,7 +54,6 @@ install_wine86_wine64(){
 	echo -e "${GREEN}Download Wine 8.7 x86 and x64 from Wine-Builds.${WHITE}"
 	wget https://github.com/Kron4ek/Wine-Builds/releases/download/8.7/wine-8.7-x86.tar.xz
 	wget https://github.com/Kron4ek/Wine-Builds/releases/download/8.7/wine-8.7-amd64.tar.xz
-
 	echo -e "${GREEN}Unpack Wine 8.7 x86 to ~/wine and x86 to ~/wine64.${WHITE}"
 	tar xvf wine-8.7-x86.tar.xz
 	tar xvf wine-8.7-amd64.tar.xz
@@ -147,7 +142,6 @@ Icon=wine
 Type=Application' > ~/Desktop/Wine32_Explorer.desktop
 	chmod +x ~/Desktop/Wine32_Explorer.desktop
 	cp ~/Desktop/Wine32_Explorer.desktop /usr/share/applications/
-
 	echo '[Desktop Entry]
 Name=Wine64 Explorer
 Exec=bash -c "wine64 explorer"
@@ -155,7 +149,6 @@ Icon=wine
 Type=Application' > ~/Desktop/Wine64_Explorer.desktop
 	chmod +x ~/Desktop/Wine64_Explorer.desktop
 	cp ~/Desktop/Wine64_Explorer.desktop /usr/share/applications/
-
 	echo -e "${GREEN}Add desktop shortcuts for winetricks.${WHITE}":
 	echo '[Desktop Entry]
 Name=Winetricks32 Explorer
@@ -164,7 +157,6 @@ Icon=wine
 Type=Application' > ~/Desktop/Winetricks32_gui.desktop
 	chmod +x ~/Desktop/Winetricks32_gui.desktop
 	cp ~/Desktop/Winetricks32_gui.desktop /usr/share/applications/
-
 	echo '[Desktop Entry]
 Name=Winetricks64 Explorer
 Exec=bash -c "winetricks64 --gui"
@@ -172,7 +164,6 @@ Icon=wine
 Type=Application' > ~/Desktop/Winetricks64_gui.desktop
 	chmod +x ~/Desktop/Winetricks64_gui.desktop
 	cp ~/Desktop/Winetricks64_gui.desktop /usr/share/applications/
-
 	echo -e "${GREEN}Add desktop shortcuts for glmark2 software and virpipe.${WHITE}"
 	echo '[Desktop Entry]
 Name=GL2Mark software
@@ -181,7 +172,6 @@ Icon=gl2mark
 Terminal=true
 Type=Application' > ~/Desktop/GL2Mark_llvmpipe.desktop
 	chmod +x ~/Desktop/GL2Mark_llvmpipe.desktop
-
 	echo '[Desktop Entry]
 Name=GL2Mark virpipe
 Exec=bash -c "env MESA_GL_VERSION_OVERRIDE=4.5COMPAT GALLIUM_DRIVER=virpipe glmark2"
@@ -197,7 +187,6 @@ install_zenity(){
 	echo -e "${UYELLOW}You need zenity to run winetricks --gui desktop shortcuts, which is space consuming.${WHITE}"
 	echo -e "Do you want to install zenity? (y/n) "
 	read yn
-	
 	case $yn in 
 		y ) echo -e "${GREEN}Install zenity...${WHITE}";
 			apt install -y zenity;;
@@ -209,10 +198,8 @@ install_zenity(){
 function rftc() {
 	local func_name=$1
 	local timeout=$2
-
 	echo -e "${GREEN}Running step: ${func_name} - stage 2.${WHITE}"
 	($func_name)
-
 	# Check if every command inside the function is executed successfully.
 	if [ $? -eq 0 ]; then
 		echo -e "${GREEN}${func_name} - stage 2 - completed successfully.${WHITE}"
@@ -237,7 +224,6 @@ rftc install_winetricks 2
 rftc create_terminal_shortcuts_winetricks 2
 rftc create_desktop_shortcuts 2
 rftc install_zenity 2
- 
 
 echo -e "${GREEN}Great, proot setup is completed! \nGoing back to the first stage to create the shortcuts and start-up scripts.${WHITE}"
 echo -e "Waiting 5 seconds to continue..."
