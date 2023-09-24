@@ -6,6 +6,8 @@ You can set up everything using this command in Termux (Github version):
 
     pkg update -y && pkg install -y wget && wget https://raw.githubusercontent.com/cheadrian/termux-chroot-proot-wine-box86_64/main/Scripts/Getting_Started.sh && chmod +x Getting_Started.sh && ./Getting_Started.sh && rm Getting_Started.sh
 	
+I recommend you to try [Winlator](https://winlator.com/), as it have a nice interface and can run X86, X64 programs almost the same as this script. Of course you will give up on the advantage of advanced customization and picking a custom version of Wine 🫠.
+
 This script will:
 - Clone this git and scripts;
 - Create an Ubuntu proot with alias ubuntu_box86;
