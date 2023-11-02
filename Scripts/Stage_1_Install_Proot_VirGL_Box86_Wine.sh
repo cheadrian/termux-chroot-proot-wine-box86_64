@@ -6,8 +6,8 @@ export WHITE='\033[0;37m'
 
 # Note: if you update the artifact link, please check the zip has the same structure.
 # Otherwise you need to update the 'install_termux_x11_pkg_app' function.
-export X11_APK_LINK='https://github.com/termux/termux-x11/releases/download/1.03.00/app-universal-debug.apk'
-export X11_COMPANION_LINK='https://github.com/termux/termux-x11/releases/download/1.03.00/companion.packages.zip'
+export X11_APK_LINK='https://github.com/termux/termux-x11/releases/download/nightly/app-universal-debug.apk'
+export X11_COMPANION_LINK='https://github.com/termux/termux-x11/releases/download/nightly/termux-x11-nightly-1.03.00-0-all.deb'
 export SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 echo -e "${UYELLOW}If you are on Android 12+, make sure to fix Phantom Processes Kill. Check Setup_Proot.md for more details."
@@ -79,9 +79,8 @@ install_termux_x11_pkg_app(){
 	# For the moment, use version from artifact to make sure it is compatible with app
 	# pkg install -y termux-x11-nightly
 	wget $X11_APK_LINK -O Termux-X11-app-universal-debug.apk
-	wget $X11_COMPANION_LINK -O Termux_X11_companion.zip
-	unzip Termux_X11_companion.zip -d Termux_X11_companion
-	dpkg -i Termux_X11_companion/termux-x11-nightly-*-all.deb
+	wget $X11_COMPANION_LINK -O termux-x11-nightly-all.deb
+	dpkg -i termux-x11-nightly-all.deb
 	sed '/allow-external-apps/s/^# //' -i ~/.termux/termux.properties
 	termux-reload-settings
 	echo -e "${GREEN}Install Termux:X11 APK. Open APP installer.${WHITE}"
@@ -157,7 +156,7 @@ cleanup(){
 	echo -e "${GREEN}Clean downloaded resources (Termux_X11, Termux_widget, etc.).${WHITE}"
 	rm -r Termux_X11
 	rm -r Termux_X11_companion
-	rm Termux_X11_companion.zip
+	rm termux-x11-nightly-all.deb
 	rm termux-widget*.apk
 	rm Termux-X11*.apk
 }
