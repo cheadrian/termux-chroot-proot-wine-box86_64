@@ -49,18 +49,18 @@ install_packages_for_box86_box64(){
 # This bash function downloads Wine for x86 and x64 architectures from the Wine-Builds repository,
 # then unpacks the downloaded archives and moves the contents 
 # to separate directories named "wine" for x86 and "wine64" for x64.
-# Default version: 8.7.
+# Default version: 9.7.
 install_wine86_wine64(){
 	set -e
-	known_versions=("8.13" "8.7" "7.22" "6.23" "5.22")
+	known_versions=("9.8" "9.0" "8.13" "8.7" "7.22" "6.23" "5.22")
 	echo -e "${GREEN}Possible Wine versions: ${known_versions[@]}${WHITE}"
 	echo -e "${UYELLOW}Check Kron4ek/Wine-Builds for released versions.${WHITE}"
-	echo -e "${UYELLOW}Enter the Wine version you want to install, (default 8.7):${WHITE}"
+	echo -e "${UYELLOW}Enter the Wine version you want to install, (default 9.8):${WHITE}"
 	version_regex="^[0-9]+\.[0-9]{2}$"
 	read version
 	if ! [[ $version =~ $version_regex ]]; then
-		echo -e "${UYELLOW}Invalid version format. Defaulting to 8.7.${WHITE}"
-		version="8.7"
+		echo -e "${UYELLOW}Invalid version format. Defaulting to 9.8.${WHITE}"
+		version="9.8"
 	fi
 	echo -e "${GREEN}Downloading Wine $version x86 and x64 from Wine-Builds.${WHITE}"
 	wget "https://github.com/Kron4ek/Wine-Builds/releases/download/$version/wine-$version-x86.tar.xz"
@@ -103,6 +103,21 @@ box86 '"$HOME/wine/bin/wine "'"$@"' > /usr/local/bin/wine
 export WINEPREFIX=~/.wine64
 box64 '"$HOME/wine64/bin/wine64 "'"$@"' > /usr/local/bin/wine64
 	chmod +x /usr/local/bin/wine64
+}
+
+# Creates two shortcuts for running Proton with Box86 and Box64 (coming soon™).
+create_terminal_shortcuts_proton_box(){
+	set -e
+	echo -e "${GREEN}Create shortcuts for Proton with box."
+	echo -e "${UYELLOW}You can use Proton x86 using the 'proton' command and Proton x64 using the 'proton64'.${WHITE}"
+	echo '#!/bin/bash 
+export WINEPREFIX=~/.proton32
+box86 '"$HOME/proton/bin/wine "'"$@"' > /usr/local/bin/proton
+	chmod +x /usr/local/bin/proton
+	echo '#!/bin/bash 
+export WINEPREFIX=~/.wine64
+box64 '"$HOME/proton64/bin/wine64 "'"$@"' > /usr/local/bin/proton64
+	chmod +x /usr/local/bin/proton64
 }
 
 # Creates two Wine prefixes for Wine x86 and Wine x64 versions in the user's home directory.
