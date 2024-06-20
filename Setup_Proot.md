@@ -99,6 +99,10 @@ Go back to proot and launch XFCE4:
     export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713
     dbus-launch --exit-with-session startxfce4 &
 
+(in proot )
+export DISPLAY=:0
+startxfce4
+
 ### Hardware acceleration
 
 You should be able to run apps using virgl. Using mesa-utils to check for the actual rendering performance:
