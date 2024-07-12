@@ -7,7 +7,7 @@ export WHITE='\033[0;37m'
 # Note: if you update the artifact link, please check the zip has the same structure.
 # Otherwise you need to update the 'install_termux_x11_pkg_app' function.
 export X11_APK_LINK='https://github.com/termux/termux-x11/releases/download/nightly/app-universal-debug.apk'
-export X11_COMPANION_LINK='https://github.com/termux/termux-x11/releases/download/nightly/termux-x11-nightly-1.03.00-0-all.deb'
+export X11_COMPANION_LINK='https://github.com/termux/termux-x11/releases/download/nightly/termux-x11-nightly-1.03.01-0-all.deb'
 export SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 echo -e "${UYELLOW}If you are on Android 12+, make sure to fix Phantom Processes Kill. Check Setup_Proot.md for more details."
